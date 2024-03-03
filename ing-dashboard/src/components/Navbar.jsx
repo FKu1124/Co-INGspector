@@ -2,12 +2,12 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import logoURL from '../assets/icon.png'
 import { useEffect, useState } from 'react';
 
-export default function MyNavbar({setAppRoute, notificationCount}) {
-  
+export default function MyNavbar({ setAppRoute, notificationCount }) {
+
   const [route, setRoute] = useState("Navigation")
 
   const logOut = () => {
-    localStorage.removeItem("loggedIn")   
+    localStorage.removeItem("loggedIn")
     localStorage.removeItem("type")
     window.location.reload();
   }
@@ -21,7 +21,7 @@ export default function MyNavbar({setAppRoute, notificationCount}) {
   useEffect(() => {
     setRoute(localStorage.getItem("route"))
   }, [])
-  
+
   return (
     <Navbar fluid rounded className='w-screen fixed border-b border-slate-500 z-50'>
       <Navbar.Brand href="/">
@@ -52,7 +52,6 @@ export default function MyNavbar({setAppRoute, notificationCount}) {
         </button>
         <button onClick={() => navigate("Analysis")} type="button" className="relative inline-flex items-center p-3 text-center">
           <Navbar.Link href="#" active={route === "Analysis" ? true : false} className="text-2xl">Transaction Stream</Navbar.Link>
-          {/* <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-2 -end-2 dark:border-gray-900">20</div> */}
         </button>
       </Navbar.Collapse>
     </Navbar>

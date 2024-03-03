@@ -42,26 +42,20 @@ export default function InspectModal({ tx, updateTransactions, addToastNotificat
         setOpenModal(true)
     }
 
-    const test = () => {
-        updateTransactions(tx["Account"])
-        setOpenModal(false)
-    }
-    
-
     const dismissAlert = () => {
         removePossibleFraudTrans()
         updateTransactions(tx["Account"])
         setOpenModal(false)
         addToastNotifications(`Dismissed Transaction of Account ${tx["Account"]}`)
     }
-    
+
     const blockPerma = () => {
         removePossibleFraudTrans()
         updateTransactions(tx["Account"])
         setOpenModal(false)
         addToastNotifications(`Blocked Transaction of Account ${tx["Account"]} Permanently`)
     }
-    
+
     const reportToAuth = () => {
         removePossibleFraudTrans()
         updateTransactions(tx["Account"])
@@ -69,7 +63,7 @@ export default function InspectModal({ tx, updateTransactions, addToastNotificat
         addToastNotifications(`Reported Account ${tx["Account"]} to Authorities`)
     }
 
-    const removePossibleFraudTrans = async() => {
+    const removePossibleFraudTrans = async () => {
         const res = await fetch(`http://localhost:8012/removePossibleFraudTrans`, {
             method: "post",
             headers: { "Content-Type": "application/json" },
@@ -77,8 +71,6 @@ export default function InspectModal({ tx, updateTransactions, addToastNotificat
         })
         const data = await res.json()
         setNotificationCounter(data.notifications)
-        // Remove "Submitted" transactions from Table
-        // setCritTransactions(critTransactions.filter((_,i) => i !==index ));
     }
 
 
@@ -97,11 +89,11 @@ export default function InspectModal({ tx, updateTransactions, addToastNotificat
                                 <li>Matching Paid - Received</li>
                                 <li>Number of Transactions in Timeframe</li>
                                 <li>Fraudulent Pattern</li>
-                                    <li>Loop</li>
-                                    <li>Stack</li>
-                                    <li>Scatter / Gather</li>
-                                    <li>Fan-In</li>             {/*  Maybe same as Matching Paid (Return all 2 / reasons in that case ) */}
-                                    <li>Fan-Out</li>            {/*  Maybe same as Matching Paid (Return all 2 / reasons in that case ) */}
+                                <li>Loop</li>
+                                <li>Stack</li>
+                                <li>Scatter / Gather</li>
+                                <li>Fan-In</li>
+                                <li>Fan-Out</li>
                                 <li>Undefined</li>
                             </ul>
                         </div>
@@ -157,10 +149,6 @@ export default function InspectModal({ tx, updateTransactions, addToastNotificat
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/* <Button color="blue" onClick={() => setOpenModal(false)}>Reopen</Button>
-                    <Button onClick={() => setOpenModal(false)}>Block Permanently</Button>
-                    <Button color="failure" onClick={() => setOpenModal(false)}>Report Suspected Money Laundering</Button> */}
-
                     <Button color="blue" onClick={() => dismissAlert()}>Dismiss Alert</Button>
                     <Button color="warning" onClick={() => blockPerma()}>Block Permanently</Button>
                     <Button color="failure" onClick={() => reportToAuth()}>Report Suspected Money Laundering</Button>

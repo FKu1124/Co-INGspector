@@ -49,18 +49,13 @@ function App() {
           <div className="h-20"></div>
 
           <div className="flex flex-row justify-around pt-16 w-screen">
-            {/* <div className='flex-initial bg-green-500'> */}
             <div className='flex-1'>
-              {/* <p>Hallo</p> */}
             </div>
             {route === "Notifications" ?
               <TableView className='flex-1' setNotificationCounter={setCount} addToastNotifications={addToastNotifications} /> :
               <Analysis className='flex-1' setNotificationCounter={setCount} addToastNotifications={addToastNotifications} />
             }
-            {/* <div className='flex-initial bg-red-500'> */}
             <div className='flex-1'>
-              {/* <p>Hallo</p> */}
-              {/* <button onClick={() => getAccountData}>Get Transactions</button> */}
             </div>
           </div>
           <div className="h-20"></div>
@@ -69,8 +64,6 @@ function App() {
           <div className="absolute bottom-0 right-0 mb-5 mr-5">
             {toastNotifications.map(item => (
               <Toast className="bg-gray-900 mb-2">
-                {/* <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
-                </div> */}
                 <div className="ml-3 text-sm font-normal text-white">{item}</div>
                 <Toast.Toggle />
               </Toast>

@@ -49,14 +49,11 @@ export default function Analysis({ setNotificationCounter,addToastNotifications 
         getData()
         getModelNames()
     }, [])
-    // }, [currentPage])
 
     const getData = async () => {
         setIsLoading(true)
-        // const res = await fetch(`http://localhost:8012/getData/${currentPage}`)
         const res = await fetch(`http://localhost:8012/getUserTrans`)
         const data = await res.json()
-        // setCritTransactions(data)
         setTransactions(data)
         setCritTransactions(data.slice(0, ELEMS))
         setIsLoading(false)
@@ -64,7 +61,6 @@ export default function Analysis({ setNotificationCounter,addToastNotifications 
 
     const getModelNames = async () => {
         setIsLoading(true)
-        // const res = await fetch(`http://localhost:8012/getData/${currentPage}`)
         const res = await fetch(`http://localhost:8012/getModelNames`)
         const data = await res.json()
         setModelNames(data)
@@ -83,11 +79,8 @@ export default function Analysis({ setNotificationCounter,addToastNotifications 
         })
         const data = await res.json()
         setNotificationCounter(data.notifications)
-        // Show New Fraud Notification
         if(data.pred === "1")
             addToastNotifications("Possibly Fraudulent Transaction Detected!")
-        // Remove "Submitted" transactions from Table
-        // setCritTransactions(critTransactions.filter((_,i) => i !==index ));
     }
 
     return (

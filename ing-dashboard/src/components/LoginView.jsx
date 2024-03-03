@@ -1,18 +1,9 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import logoURL from '../assets/icon.png'
-import { useState } from 'react';
 
 export default function LoginView() {
-    const [text, onChangeText] = useState('Useless Text');
-    const login = (e) => {
-        // e.preventDefault()
-        // console.log(e)
-        // console.log(e.nativeEvent)
-        // e.preventDefault();
-        // const data = new FormData(e.target);
-        // console.log([...data.entries()]);
+    const login = () => {
         localStorage.setItem("loggedIn", "true")
-        // localStorage.setItem("type", text.strip().toLowerCase() === "felix" ? "Admin" : "User")
     }
 
     return (

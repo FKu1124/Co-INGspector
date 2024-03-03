@@ -44,21 +44,17 @@ export default function TableView({ setNotificationCounter, addToastNotification
     useEffect(() => {
         getData()
     }, [])
-    // }, [currentPage])
 
     const getData = async () => {
         setIsLoading(true)
-        // const res = await fetch(`http://localhost:8012/getData/${currentPage}`)
         const res = await fetch(`http://localhost:8012/getData`)
         const data = await res.json()
-        // setCritTransactions(data)
         setTransactions(data)
         setCritTransactions(data.slice(0, 10))
         setIsLoading(false)
         setNotificationCounter(data.length)
     }
 
-    // const onPageChange = (page) => setCurrentPage(page);
     const onPageChange = (page) => {
         setCurrentPage(page)
         setCritTransactions(transactions.slice((page - 1) * ELEMS, page * ELEMS))
